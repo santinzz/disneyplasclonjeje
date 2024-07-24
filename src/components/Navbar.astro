@@ -1,0 +1,62 @@
+---
+import Logo from './Logo.astro'
+import HomeIcon from '@components/icons/HomeIcon.astro'
+import SearchIcon from '@components/icons/SearchIcon.astro'
+import PlusIcon from '@components/icons/PlusIcon.astro'
+import EspnIcon from '@components/icons/EspnIcon.astro'
+import MovieIcon from '@components/icons/MovieIcon.astro'
+import TvIcon from '@components/icons/TvIcon.astro'
+import StarIcon from '@components/icons/StarIcon.astro'
+
+import lokiWebp from '@assets/loki.webp'
+import lokiPng from '@assets/loki.png'
+
+const navLinks = [
+  { label: 'Home', href: '/home', Icon: HomeIcon },
+  { label: 'Search', href: '/search', Icon: SearchIcon },
+  { label: 'My list', href: '/mylist', Icon: PlusIcon },
+  { label: 'ESPN', href: '/espn', Icon: EspnIcon },
+  { label: 'TV Shows', href: '/tvshows', Icon: TvIcon },
+  { label: 'Movies', href: '/movies', Icon: MovieIcon },
+  { label: 'Originals', href: '/originals', Icon: StarIcon },
+]
+---
+
+<header
+  class="flex justify-between px-8 py-4 items-center bg-gradient-to-b from-black to-transparent"
+>
+  <nav class="flex items-center gap-12">
+    <Logo className="w-28" />
+    <ul class="flex gap-10">
+      {
+        navLinks.map(({ label, href, Icon }) => (
+          <li>
+            <a href={href} class="flex items-center gap-2">
+              <Icon />
+              <span
+                class:list={[
+                  'font-medium text-md h-7 relative',
+                  'after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-white',
+                  'after:w-0 after:transition-all hover:after:w-full hover:duration-200',
+                ]}
+              >
+                {label}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <nav>
+    <!-- TODO Here will be the profile component instead of this random one  -->
+    <div class="flex items-center gap-4">
+      <span class="font-medium">Santiago</span>
+      <picture>
+        <source srcset={lokiWebp.src} type="image/webp" />
+        <source srcset={lokiPng.src} type="image/png" />
+        <img src={lokiPng.src} alt="background" class="w-16" />
+      </picture>
+    </div>
+  </nav>
+</header>

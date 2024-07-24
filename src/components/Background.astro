@@ -1,0 +1,14 @@
+---
+import backgroundWebp from '@assets/background.webp'
+import backgroundPng from '@assets/background.png'
+---
+
+<picture class="absolute top-0 left-0 w-full h-full -z-50">
+  <source srcset={backgroundWebp.src} type="image/webp" />
+  <source srcset={backgroundPng.src} type="image/png" />
+  <img
+    src={backgroundPng.src}
+    alt="background"
+    class="w-full h-full object-cover"
+  />
+</picture>

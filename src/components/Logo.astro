@@ -1,0 +1,16 @@
+---
+import logoWebp from '@assets/logo.webp'
+import logoPng from '@assets/logo.png'
+
+interface Props {
+  className?: string
+}
+
+const { className } = Astro.props
+---
+
+<picture>
+  <source srcset={logoWebp.src} type="image/webp" />
+  <source srcset={logoPng.src} type="image/png" />
+  <img src={logoPng.src} alt="background" class={className} />
+</picture>
